@@ -2,19 +2,21 @@ import mysql.connector
 
 try:
     conn = mysql.connector.connect(
-        host='localhost',
+        host='127.0.0.1',
         user='root',
-        password='' ,
-        database='airlines'
+        password='root' ,
+        auth_plugin="mysql_native_password"
+
+        #database='airlines'
         )
     cursor = conn.cursor()
     print('Connected to the database')
 except:
     print('Cannot connect to the database')
 
-# Create a database 
-#cursor.execute('CREATE DATABASE IF NOT EXISTS airlines')
-#conn.commit()
+#Create a database 
+# cursor.execute('CREATE DATABASE IF NOT EXISTS airlines')
+# conn.commit()
 
 #create table
 # cursor.execute('''
@@ -58,8 +60,8 @@ except:
 
 
 # Delete data
-cursor.execute('''
-DELETE FROM airlines
-WHERE airport_id = 5
-''')
-conn.commit()
+# cursor.execute('''
+# DELETE FROM airlines
+# WHERE airport_id = 5
+# ''')
+# conn.commit()
