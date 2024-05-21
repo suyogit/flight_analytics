@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
 from db import DB
+import plotly.express as px
 
 db= DB()
 
@@ -31,6 +32,26 @@ elif user_option == 'Analytics':
     )
     st.header("Pie Chart")
     st.plotly_chart(fig)
+
+
+    city, frequency1 = db.busy_airport()
+    fig=px.bar(
+        x=city,
+        y=frequency1
+    )
+
+    st.plotly_chart(fig, theme='streamlit', use_container_width=True)
+
+    
+    date, frequency2 = db.daily_freq()
+    fig=px.line(
+        x=date,
+        y=frequency2 
+    )
+
+    st.plotly_chart(fig, theme='streamlit', use_container_width=True)
+
+
 
 
 else:
